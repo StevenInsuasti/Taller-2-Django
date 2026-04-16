@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Asistencia</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .card { background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); padding: 40px; width: 100%; max-width: 600px; }
+        h1 { color: #2d6a4f; margin-bottom: 8px; font-size: 1.8rem; }
+        .subtitle { color: #6c757d; margin-bottom: 30px; font-size: 0.95rem; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 600; color: #333; margin-bottom: 6px; font-size: 0.9rem; }
+        input, textarea, select { width: 100%; padding: 10px 14px; border: 1px solid #ced4da; border-radius: 8px; font-size: 0.95rem; transition: border-color 0.2s; }
+        input:focus, textarea:focus { outline: none; border-color: #2d6a4f; box-shadow: 0 0 0 3px rgba(45,106,79,0.15); }
+        .checkbox-group { display: flex; align-items: center; gap: 10px; }
+        .checkbox-group input { width: auto; }
+        .errorlist { color: #dc3545; font-size: 0.85rem; margin-top: 4px; list-style: none; }
+        .btn { background: #2d6a4f; color: white; border: none; padding: 12px 30px; border-radius: 8px; font-size: 1rem; cursor: pointer; width: 100%; margin-top: 10px; transition: background 0.2s; }
+        .btn:hover { background: #1b4332; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>📋 Registro de Asistencia</h1>
+        <p class="subtitle">Complete el formulario para registrar su asistencia.</p>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {% if field.field.widget.input_type == 'checkbox' %}
+                        <div class="checkbox-group">
+                            {{ field }}
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        </div>
+                    {% else %}
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                    {% endif %}
+                    {% if field.errors %}
+                        <ul class="errorlist">
+                            {% for error in field.errors %}<li>{{ error }}</li>{% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn">Registrar Asistencia</button>
+        </form>
+    </div>
+</body>
+</html>
