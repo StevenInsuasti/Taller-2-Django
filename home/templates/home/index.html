@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller Formularios Django</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1b4332 0%, #3730a3 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 1.05rem;
+            opacity: 0.85;
+        }
+
+        .cards {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 35px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+        }
+
+        .card .icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #6c757d;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .card.asistencia .btn {
+            background: #2d6a4f;
+        }
+
+        .card.solicitudes .btn {
+            background: #3730a3;
+        }
+
+        .btn {
+            display: inline-block;
+            color: white;
+            padding: 10px 28px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+
+        .btn:hover { opacity: 0.85; }
+
+        .footer {
+            margin-top: 50px;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🎓 Taller Formularios Django</h1>
+        <p>Selecciona el módulo al que deseas acceder</p>
+    </div>
+
+    <div class="cards">
+        <a href="/asistencia/" class="card asistencia">
+            <div class="icon">📋</div>
+            <h2>Asistencia</h2>
+            <p>Registra la asistencia de los participantes con fecha, hora y datos de contacto.</p>
+            <span class="btn">Ir a Asistencia</span>
+        </a>
+
+        <a href="/solicitudes/" class="card solicitudes">
+            <div class="icon">📝</div>
+            <h2>Solicitudes</h2>
+            <p>Envía una solicitud académica, administrativa, técnica u otra con archivo adjunto.</p>
+            <span class="btn">Ir a Solicitudes</span>
+        </a>
+    </div>
+
+    <div class="footer">
+        Taller 2 &mdash; Desarrollo Web con Django
+    </div>
+
+</body>
+</html>
